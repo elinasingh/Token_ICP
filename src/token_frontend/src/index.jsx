@@ -22,9 +22,15 @@ const init = async () => {
 }
 
 async function handleAuthenticated(authClient) {
+  // console.log(authClient.getIdentity());
+  const identity = await authClient.getIdentity();
+  const userPrincipal = identity._principal.toString();
+  console.log(userPrincipal);
   const root = createRoot(document.getElementById("root"));
   root.render(
-    <App />
+    <App 
+    loggedInPrincipal={userPrincipal}
+    />
   );
 }
 };
